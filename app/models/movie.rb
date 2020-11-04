@@ -3,7 +3,7 @@ class Movie < ApplicationRecord
   include PgSearch::Model
 
   pg_search_scope :search_by_title_and_syllabus,
-      against: [title: 'A', syllabus: 'C'],
+      against: [:title, :syllabus],
       associated_against: {
             director: [ :first_name, :last_name ]
           },
