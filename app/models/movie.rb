@@ -4,7 +4,10 @@ class Movie < ApplicationRecord
 
   pg_search_scope :search_by_title_and_syllabus,
       against: [:title, :syllabus],
+      associated_against: {
+            director: [ :first_name, :last_name ]
+          },
     using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+      tsearch: { prefix: true } # <-- now `nolan` will return something!
     }
 end
