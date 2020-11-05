@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
     if params[:query].present?
       @results = PgSearch.multisearch(params[:query])
     else
-      @results = Movie.all
+      @movies = Movie.all
     end
   end
 end
