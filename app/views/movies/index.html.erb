@@ -12,9 +12,14 @@
       <% end %>
 
       <div id="movies">
-        <% @movies.each do |movie| %>
-          <h4><%= movie.title %></h4>
-          <p><%= movie.syllabus %></p>
+        <% @results.each do |result| %>
+
+        <% if result.searchable_type == 'Movie' %>
+          <p>By <%= result.searchable.director.first_name %> </p>
+        <% end %>
+
+          <h4><%= result.searchable.title %></h4>
+          <p><%= result.searchable.syllabus %></p>
         <% end %>
       </div>
     </div>
